@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "flight-search": "apps/flight-search",
+    "flight-search-e2e": "apps/flight-search-e2e"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "root": "apps/flight-search-e2e",
+  "sourceRoot": "apps/flight-search-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/flight-search-e2e/cypress.json",
+        "devServerTarget": "flight-search:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "flight-search:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/flight-search-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["flight-search"]
+}
