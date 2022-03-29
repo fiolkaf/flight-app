@@ -9,7 +9,8 @@
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option
       *ngFor="let airport of filteredAirports$ | async"
-      [value]="airport"
+      [value]="airport.name"
+      (onSelectionChange)="onSelectionChange(airport)"
     >
       {{ airport.name }}
     </mat-option>

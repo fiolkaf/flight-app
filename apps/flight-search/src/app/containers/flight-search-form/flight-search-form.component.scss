@@ -1,0 +1,13 @@
+.flight-search-form {
+  padding: 1em;
+
+  &--row {
+    margin: 0 1em;
+  }
+
+  &--cell {
+    display: inline-block;
+    margin: 0 1em;
+    width: 15em;
+  }
+}

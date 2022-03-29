@@ -1,0 +1,6 @@
+<mat-form-field>
+  <mat-label>{{ title }}</mat-label>
+  <input matInput autocomplete="off" [matDatepicker]="picker" (dateInput)="onDateChange($event)">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

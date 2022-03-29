@@ -1,0 +1,18 @@
+<form class="flight-search-form">
+  <div class="flight-search-form--row">
+    <div class="flight-search-form--cell">
+      <flight-app-airport-picker title="Departure" (selectionChange)="onDepartureAirportSelected($event)"></flight-app-airport-picker>
+    </div>
+    <div class="flight-search-form--cell">
+      <flight-app-airport-picker title="Departure" (selectionChange)="onDepartureAirportSelected($event)"></flight-app-airport-picker>
+    </div>
+  </div>
+  <div class="flight-search-form--row">
+    <div class="flight-search-form--cell">
+      <flight-app-date-picker title="Departure date" (selectionChange)="onDepartureDateSelected($event)"></flight-app-date-picker>
+    </div>
+    <div class="flight-search-form--cell">
+      <flight-app-date-picker title="Return date" (selectionChange)="onReturnDateSelected($event)"></flight-app-date-picker>
+    </div>
+  </div>
+</form>

@@ -1,4 +1,7 @@
 export type Airport = {
-  id: number;
+  id: string;
   name: string;
+  detailedName: string;
+  subType: string;
+  timeZoneOffset: string;
 }

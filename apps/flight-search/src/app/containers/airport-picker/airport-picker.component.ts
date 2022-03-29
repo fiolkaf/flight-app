@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Observable, of } from 'rxjs';
 import { Airport } from '@flight-app/models';
-import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {
-  startWith,
   debounceTime,
   distinctUntilChanged,
   mergeMap,
@@ -17,16 +16,25 @@ import { AmadeusService } from '../../services/amadeus.service';
 })
 export class AirportPickerComponent {
   @Input() title = '';
+  @Output() selectionChange = new EventEmitter<Airport>();
 
   myControl = new FormControl();
+  selectedAirport?: Airport;
   filteredAirports$: Observable<Airport[]>;
+
+  onSelectionChange(airport: Airport) {
+    this.selectedAirport = airport;
+    this.selectionChange.emit(airport);
+  }
 
   constructor(private service: AmadeusService) {
     this.filteredAirports$ = this.myControl.valueChanges.pipe(
-      startWith(''),
       debounceTime(400),
       distinctUntilChanged(),
       mergeMap((keyword: string) => {
+        if (!keyword.length || this.selectedAirport?.name === keyword) {
+          return of([]);
+        }
         return service.getAirports(keyword);
       })
     );

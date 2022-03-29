@@ -1,6 +1,10 @@
 {
+  "cli": {
+    "analytics": "3ad7cd7e-231a-4f0c-9604-5c62e8e6f0e5"
+  },
   "version": 2,
   "projects": {
+    "flight-api": "apps/flight-api",
     "flight-search": "apps/flight-search",
     "flight-search-e2e": "apps/flight-search-e2e",
     "models": "libs/models"
