@@ -1,0 +1,18 @@
+<div>
+  <mat-spinner *ngIf="loading" class="flight-result-spinner"></mat-spinner>
+  <mat-card *ngIf="error" class="flight-result-error" >{{ error }}</mat-card>
+
+  <ng-container *ngFor="let flightDestination of flightDestinations$ | async">
+    <mat-card>
+      <div>{{ flightDestination.departureDate }} - {{ flightDestination.returnDate }}</div>
+      <mat-card-header>
+        <mat-card-title>
+          <span>{{ flightDestination.departureName }}</span> - <span>{{ flightDestination.destinationName }}</span>
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ flightDestination.totalPrice }}
+        </mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </ng-container>
+</div>

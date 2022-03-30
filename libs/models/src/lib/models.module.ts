@@ -5,4 +5,6 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class ModelsModule {}
+
 export * from './airport';
+export * from './flight-destination';

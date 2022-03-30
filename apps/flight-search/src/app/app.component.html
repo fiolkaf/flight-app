@@ -1,1 +1,6 @@
-<flight-app-flight-search-form></flight-app-flight-search-form>
+<flight-app-flight-search-form (selectionChange)="onSelectionChange($event)"></flight-app-flight-search-form>
+<flight-app-flight-results
+  [departureAirportIataCode]="flightSearchParams?.departureAirportIataCode"
+  [departureDate]="flightSearchParams?.departureDate"
+>
+</flight-app-flight-results>

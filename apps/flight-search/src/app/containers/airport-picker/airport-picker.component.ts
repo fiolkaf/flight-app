@@ -35,7 +35,7 @@ export class AirportPickerComponent {
         if (!keyword.length || this.selectedAirport?.name === keyword) {
           return of([]);
         }
-        return service.getAirports(keyword);
+        return this.service.getAirports(keyword);
       })
     );
   }

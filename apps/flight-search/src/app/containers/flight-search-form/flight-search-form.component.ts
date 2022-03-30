@@ -1,12 +1,6 @@
 import { Airport } from '@flight-app/models';
+import { FlightSearchParams } from '../../types/flight-search-params';
 import { Component, Output, EventEmitter } from '@angular/core';
-
-type FlightSearchParams = {
-  departureAirportId?: string;
-  destinationAirportId?: string;
-  departureDate?: Date;
-  returnDate?: Date;
-}
 
 @Component({
   selector: 'flight-app-flight-search-form',
@@ -20,29 +14,18 @@ export class FlightSearchFormComponent {
   private searchParams: FlightSearchParams = {};
 
   onDepartureAirportSelected(airport: Airport) {
-    this.searchParams.departureAirportId = airport.id;
-    this.validateAndEmitSearchParameters();
-  }
-
-  onDestinationAirportSelected(airport: Airport) {
-    this.searchParams.destinationAirportId = airport.id;
+    this.searchParams.departureAirportIataCode = airport.iataCode;
     this.validateAndEmitSearchParameters();
   }
 
   onDepartureDateSelected(date: Date) {
-    this.searchParams.departureDate = date;
-    this.validateAndEmitSearchParameters();
-  }
-
-  onReturnDateSelected(date: Date) {
-    this.searchParams.returnDate = date;
+    const isoDateTime = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+    this.searchParams.departureDate = isoDateTime;
     this.validateAndEmitSearchParameters();
   }
 
   validateAndEmitSearchParameters() {
-    if (!this.searchParams.departureAirportId ||
-        !this.searchParams.destinationAirportId ||
-        !this.searchParams.departureDate) {
+    if (!this.searchParams.departureAirportIataCode) {
       return;
     }
 

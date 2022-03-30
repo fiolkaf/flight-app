@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FlightSearchParams } from './types/flight-search-params';
 
 @Component({
   selector: 'flight-app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'flight-search';
+
+  flightSearchParams?: FlightSearchParams;
+
+  onSelectionChange(flightSearchParams: FlightSearchParams) {
+    this.flightSearchParams = flightSearchParams;
+  }
 }

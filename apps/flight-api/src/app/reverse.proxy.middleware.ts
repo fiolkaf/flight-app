@@ -8,15 +8,12 @@ export class ReverseProxyMiddleware implements NestMiddleware {
     pathRewrite: { '/api': '' },
     changeOrigin: true,
     secure: false,
-    logLevel: 'debug',
-    onProxyReq: (proxyReq, req, res) => {
-      console.log('proxy');
-    }
+    logLevel: 'debug'
   });
 
   use(req, res, next: () => void) {
     this.proxy(req, res, (err) => {
-      console.log('err', err);
+      console.error('err', err);
     });
   }
 }
